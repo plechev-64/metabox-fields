@@ -1,5 +1,10 @@
 <?php
 
+namespace Example;
+
+use Core\Module\CustomFields\Field;
+use Core\Module\MetaBox\MetaBox;
+
 class ThumbnailMetaBox extends MetaBox {
 
 	function __construct( $id, $args = [] ) {
@@ -8,7 +13,7 @@ class ThumbnailMetaBox extends MetaBox {
 
 	function get_content( $post ) {
 
-		return APF::setup( 'image', [
+		return Field::setup( 'image', [
 			'id'          => '_thumbnail_id',
 			'output_size' => [ 150, 150 ],
 			'required'    => 1,

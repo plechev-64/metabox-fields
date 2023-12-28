@@ -1,5 +1,9 @@
 <?php
 
+namespace Example;
+
+use Core\Module\CustomFields\Field;
+use Core\Module\MetaBox\MetaBox;
 
 class TermsMetaBox extends MetaBox {
 
@@ -7,22 +11,22 @@ class TermsMetaBox extends MetaBox {
 		parent::__construct( $id, $args );
 	}
 
-	function get_content( $term ) {
+	function getContent( $term ) {
 
-		return $this->get_taxonomy_table( [
-			APF::setup( 'text', [
+		return $this->getTaxonomyTable( [
+			Field::setup( 'text', [
 				'id'    => 'text_value',
 				'width' => 'full',
 				'title' => __( 'Текстовое поле' ),
 				'value' => !empty($term->term_id)? get_term_meta( $term->term_id, 'text_value', 1 ): ''
 			] ),
-			APF::setup( 'textarea', [
+			Field::setup( 'textarea', [
 				'id'    => 'textarea_value',
 				'width' => 'full',
 				'title' => __( 'Текстовое поле' ),
 				'value' => !empty($term->term_id)? get_term_meta( $term->term_id, 'textarea_value', 1 ): ''
 			] ),
-			APF::setup( 'checkbox', [
+			Field::setup( 'checkbox', [
 				'id'    => 'checkbox_value',
 				'width' => 'full',
 				'title' => __( 'Чекбоксы' ),

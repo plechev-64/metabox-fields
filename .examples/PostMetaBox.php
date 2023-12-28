@@ -1,5 +1,11 @@
 <?php
 
+namespace Example;
+
+use Core\Module\CustomFields\Field;
+use Core\Module\CustomFields\Repeater;
+use Core\Module\MetaBox\MetaBox;
+
 class PostMetaBox extends MetaBox {
 
 	private $values = [];
@@ -8,22 +14,22 @@ class PostMetaBox extends MetaBox {
 		parent::__construct( $id, $args );
 
 		//инициализация репитера
-		$this->init_repeater( 'repeater_id', new APF_Repeater( [
-			APF::setup( 'image', [
+		$this->initRepeater( 'repeater_id', new Repeater( [
+			Field::setup( 'image', [
 				'id' => 'image_id'
 			] ),
-			APF::setup( 'text', [
+			Field::setup( 'text', [
 				'id' => 'text_id'
 			] ),
 		] ) );
 	}
 
-	function get_content( $post ) {
+	function getContent( $post ) {
 
 		$this->values = get_post_meta( $post->ID, 'meta_values', 1 );
 
 		//Вкладки
-		$content = $this->get_subpages( [
+		$content = $this->getSubpages( [
 			'subpages' => [
 				'simple'   => [
 					'name' => 'Простые поля'
@@ -66,7 +72,7 @@ class PostMetaBox extends MetaBox {
 
 		$content = '<div class="apf-fields apf-fields_flex">';
 		//text
-		$content .= APF::setup( 'text', [
+		$content .= Field::setup( 'text', [
 			'id'    => 'text_field',
 			'title' => __( 'Текстовое поле' ),
 			'width' => 'full',
@@ -74,7 +80,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//number
-		$content .= APF::setup( 'number', [
+		$content .= Field::setup( 'number', [
 			'id'         => 'number_field',
 			'title'      => __( 'Число' ),
 			'width'      => 'full',
@@ -86,7 +92,7 @@ class PostMetaBox extends MetaBox {
 		$content .= '</div>';
 
 		//textarea
-		$content .= APF::setup( 'textarea', [
+		$content .= Field::setup( 'textarea', [
 			'id'    => 'textarea_field',
 			'title' => __( 'Текстовое поле' ),
 			'width' => 'full',
@@ -95,7 +101,7 @@ class PostMetaBox extends MetaBox {
 
 		$content .= '<div class="apf-fields apf-fields_flex">';
 		//select
-		$content .= APF::setup( 'select', [
+		$content .= Field::setup( 'select', [
 			'id'          => 'select_field',
 			'title'       => __( 'Выбор' ),
 			'empty_first' => 'Ничего не выбрано',
@@ -108,7 +114,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//select
-		$content .= APF::setup( 'radio', [
+		$content .= Field::setup( 'radio', [
 			'id'          => 'radio_field',
 			'title'       => __( 'Выбор' ),
 			'empty_first' => 'Ничего не выбрано',
@@ -121,7 +127,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//checkbox
-		$content .= APF::setup( 'checkbox', [
+		$content .= Field::setup( 'checkbox', [
 			'id'     => 'checkbox_field',
 			'title'  => __( 'Чекбоксы' ),
 			'values' => [
@@ -134,7 +140,7 @@ class PostMetaBox extends MetaBox {
 		$content .= '</div>';
 
 		//multi-text
-		$content .= APF::setup( 'multi-text', [
+		$content .= Field::setup( 'multi-text', [
 			'id'    => 'multitext_field',
 			'title' => __( 'Множественные текстовые поля' ),
 			'width' => 'half',
@@ -142,7 +148,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//image
-		$content .= APF::setup( 'image', [
+		$content .= Field::setup( 'image', [
 			'id'          => 'image_field',
 			'title'       => __( 'Изображение' ),
 			'output_size' => [ 100, 100 ],
@@ -150,7 +156,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//editor
-		$content .= APF::setup( 'editor', [
+		$content .= Field::setup( 'editor', [
 			'id'           => 'editor_field',
 			'title'        => __( 'Редактор' ),
 			'media_button' => 1,
@@ -166,7 +172,7 @@ class PostMetaBox extends MetaBox {
 	function getChildrenFields( $data, $post ) {
 
 		//select
-		$content = APF::setup( 'select', [
+		$content = Field::setup( 'select', [
 			'id'          => 'select_parent',
 			'title'       => __( 'Выбор' ),
 			'empty_first' => 'Ничего не выбрано',
@@ -178,7 +184,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//text
-		$content .= APF::setup( 'text', [
+		$content .= Field::setup( 'text', [
 			'id'     => 'child_field1',
 			'parent' => [ 'select_parent' => [ 1 ] ],
 			'title'  => __( 'Дочернее поле 1' ),
@@ -187,7 +193,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//text
-		$content .= APF::setup( 'text', [
+		$content .= Field::setup( 'text', [
 			'id'     => 'child_field2',
 			'parent' => [ 'select_parent' => [ 2 ] ],
 			'title'  => __( 'Дочернее поле 2' ),
@@ -196,7 +202,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//select
-		$content .= APF::setup( 'radio', [
+		$content .= Field::setup( 'radio', [
 			'id'          => 'radio_parent',
 			'title'       => __( 'Выбор' ),
 			'empty_first' => 'Ничего не выбрано',
@@ -208,7 +214,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//text
-		$content .= APF::setup( 'text', [
+		$content .= Field::setup( 'text', [
 			'id'     => 'child_field3',
 			'parent' => [ 'radio_parent' => [ 1 ] ],
 			'title'  => __( 'Дочернее поле 3' ),
@@ -217,7 +223,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//text
-		$content .= APF::setup( 'text', [
+		$content .= Field::setup( 'text', [
 			'id'     => 'child_field4',
 			'parent' => [ 'radio_parent' => [ 2 ] ],
 			'title'  => __( 'Дочернее поле 4' ),
@@ -226,7 +232,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//checkbox
-		$content .= APF::setup( 'checkbox', [
+		$content .= Field::setup( 'checkbox', [
 			'id'     => 'checkbox_parent',
 			'title'  => __( 'Чекбоксы' ),
 			'values' => [
@@ -238,7 +244,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//text
-		$content .= APF::setup( 'text', [
+		$content .= Field::setup( 'text', [
 			'id'     => 'child_field5',
 			'parent' => [ 'checkbox_parent' => [ 'child_field5' ] ],
 			'title'  => __( 'Дочернее поле 5' ),
@@ -247,7 +253,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//text
-		$content .= APF::setup( 'text', [
+		$content .= Field::setup( 'text', [
 			'id'     => 'child_field6',
 			'parent' => [ 'checkbox_parent' => [ 'child_field6' ] ],
 			'title'  => __( 'Дочернее поле 6' ),
@@ -256,7 +262,7 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//text
-		$content .= APF::setup( 'text', [
+		$content .= Field::setup( 'text', [
 			'id'     => 'child_field7',
 			'parent' => [ 'checkbox_parent' => [ 'child_field7' ] ],
 			'title'  => __( 'Дочернее поле 7' ),
@@ -272,10 +278,10 @@ class PostMetaBox extends MetaBox {
 
 		$content = '<div class="apf-fields apf-fields_flex">';
 		//taxonomy select
-		$content .= APF::setup( 'taxonomy', [
+		$content .= Field::setup( 'taxonomy', [
 			'name'  => 'category', //'taxonomy-name',
 			'title' => 'Одичное значение',
-			'field' => APF::setup( 'select', [
+			'field' => Field::setup( 'select', [
 				'id'     => 'taxonomy_single',
 				'search' => 1,
 				'value'  => ! empty( $this->values['taxonomy_single'] ) ? $this->values['taxonomy_single'] : 0
@@ -283,20 +289,20 @@ class PostMetaBox extends MetaBox {
 		] )->get_html();
 
 		//taxonomy multiselect
-		$content .= APF::setup( 'taxonomy', [
+		$content .= Field::setup( 'taxonomy', [
 			'name'  => 'post_tag', //'taxonomy-name',
 			'title' => 'Множественный выбор',
-			'field' => APF::setup( 'multiselect', [
+			'field' => Field::setup( 'multiselect', [
 				'id'    => 'taxonomy_multi',
 				'value' => ! empty( $this->values['taxonomy_multi'] ) ? $this->values['taxonomy_multi'] : []
 			] )
 		] )->get_html();
 
 		//taxonomy multiselect
-		$content .= APF::setup( 'taxonomy', [
+		$content .= Field::setup( 'taxonomy', [
 			'name'  => 'post_tag', //'taxonomy-name',
 			'title' => 'Сортируемые значения',
-			'field' => APF::setup( 'multiselect', [
+			'field' => Field::setup( 'multiselect', [
 				'id'       => 'taxonomy_sort',
 				'sortable' => 1,
 				'value'    => ! empty( $this->values['taxonomy_sort'] ) ? $this->values['taxonomy_sort'] : []
@@ -336,7 +342,7 @@ class PostMetaBox extends MetaBox {
 
 			$content = '<h4>' . $data['name'] . '</h4>';
 
-			$content .= APF::setup( 'text', [
+			$content .= Field::setup( 'text', [
 				'id'         => 'seo_' . $id . '_h1',
 				'input_name' => 'seo[' . $id . '][h1]',
 				'title'      => __( 'SEO H1' ) . ': ' . $data['name'],
@@ -344,7 +350,7 @@ class PostMetaBox extends MetaBox {
 				'value'      => ! empty( $this->values['seo'][ $id ]['h1'] ) ? $this->values['seo'][ $id ]['h1'] : ''
 			] )->get_html();
 
-			$content .= APF::setup( 'text', [
+			$content .= Field::setup( 'text', [
 				'id'         => 'seo_' . $id . '_title',
 				'input_name' => 'seo[' . $id . '][title]',
 				'title'      => __( 'SEO Title' ) . ': ' . $data['name'],
@@ -353,7 +359,7 @@ class PostMetaBox extends MetaBox {
 			] )->get_html();
 
 			//textarea
-			$content .= APF::setup( 'editor', [
+			$content .= Field::setup( 'editor', [
 				'id'         => 'seo_' . $id . '_description',
 				'input_name' => 'seo[' . $id . '][description]',
 				'title'      => __( 'SEO Description' ) . ': ' . $data['name'],

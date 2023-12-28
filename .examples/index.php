@@ -1,9 +1,9 @@
 <?php
 
-require_once 'SettingsPage.php';
-require_once 'PostMetaBox.php';
-require_once 'ThumbnailMetaBox.php';
-require_once 'TermsMetaBox.php';
+use Example\PostMetaBox;
+use Example\SettingsPage;
+use Example\TermsMetaBox;
+use Example\ThumbnailMetaBox;
 
 new SettingsPage( 'general-settings', [
 	'title' => 'Настройки'

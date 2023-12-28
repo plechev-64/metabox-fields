@@ -1,0 +1,290 @@
+.apf-field{
+    padding: 10px;
+    border: #eeeeee solid 1px;
+    margin-bottom: 5px;
+	position:relative;
+}
+.apf-field .apf-field__title,
+.apf-field-title{
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.apf-field .apf-field__content{
+    /*display: flex;*/
+	/*flex-wrap: wrap;*/
+	/*align-items: center;*/
+}
+.apf-field_editor{
+
+}
+.apf-image__icon{
+	margin: 0 auto;
+}
+.apf-field.apf-field_multi-text input{
+	width: 100%!important;
+	padding-right: 30px;
+}
+.apf-field_editor .apf-field__content.apf-field__content_full{
+	display:block;
+}
+.apf-field .apf-field__content input:not([type="button"],[type="radio"],[type="checkbox"]){
+	width: 150px;
+}
+.apf-field .apf-field__content textarea{
+	min-height: 150px;
+}
+.apf-field .apf-field__content.apf-field__content_full input:not([type="button"],[type="radio"],[type="checkbox"]),
+.apf-field .apf-field__content.apf-field__content_full textarea,
+.apf-field .apf-field__content.apf-field__content_full select,
+.apf-field .multi-text{
+	width: 100%;
+}
+.apf-field .apf-field__content.apf-field__content_half input:not([type="button"],[type="radio"],[type="checkbox"]),
+.apf-field .apf-field__content.apf-field__content_half textarea,
+.apf-field .apf-field__content.apf-field__content_half select,
+.apf-field .multi-text{
+	width: 50%;
+}
+.apf-radio{
+	margin-right: 10px;
+	display: inline-block;
+}
+.apf-field .apf-radio_block,
+.apf-field .apf-checkbox_block{
+	display: block;
+	margin: 5px 0;
+}
+.apf-field .apf-field__notice{
+	font-size: 13px;
+}
+.apf-field.apf-field_children{
+	display: none;
+}
+.apf-field .multi-text {
+	background-color: #f5f5f5;
+	display: block;
+	padding: 10px;
+}
+.apf-field .multi-text .multi-text__value,
+.apf-field .multi-text .ui-sortable-placeholder {
+	background-color: #ebebeb;
+	border: 1px solid #dbdbdb;
+	clear: both;
+	display: block;
+	line-height: normal;
+	margin: 3px 0;
+	padding: 2px;
+	position: relative;
+}
+.apf-field .multi-text .multi-text__value a i{
+	font-style: normal;
+}
+.apf-field .multi-text .multi-text__value a i::before {
+	background-color: #f5f5f5;
+	color: rgb(76, 140, 189);
+	font-family: dashicons;
+	font-size: 20px;
+	height: 20px;
+	padding: 3px;
+	position: absolute;
+	right: 4px;
+	top: 4px;
+}
+.apf-field .multi-text .multi-text__value a i.fa-plus::before {
+	content: "\f543";
+}
+.apf-field .multi-text .multi-text__value a i.fa-minus::before {
+	content: "\f460";
+}
+.apf-field .multi-text input {
+	width: 80%;
+}
+.apf-field.apf-field_file{
+
+}
+.apf-field.apf-field_file .apf-file{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.apf-file .apf-file__icon{
+	margin-right: 10px;
+}
+.apf-file .apf-file__buttons{
+
+}
+.apf-file .apf-file__buttons input,
+.apf-image .apf-image__buttons input{
+	margin-left: 20px;
+}
+
+.apf-image__buttons{
+	display: flex;
+}
+
+.apf-image img{
+	max-width: 100%;
+	margin: 10px auto;
+	display: block;
+	height: auto;
+}
+
+.apf-checkbox{
+	padding: 0 5px;
+}
+
+.apf-groups{
+
+}
+.apf-fields-group{
+	/*margin-bottom: 15px;*/
+    /*border: 1px solid #dbdbdb;*/
+    /*padding: 10px;*/
+    display: flex;
+    justify-content: space-between;
+}
+.apf-fields{
+
+}
+.apf-fields.apf-fields_flex{
+    display: flex;
+}
+.apf-fields.apf-fields_flex .apf-field{
+    width: 100%;
+}
+
+.pkr-page p.submit{
+    text-align: right;
+    margin: 0;
+}
+.submit-wrap{
+    padding:10px;
+}
+.pkr-postbox{
+    padding: 10px;
+}
+.pkr-promo-setting{
+    margin-bottom: 20px;
+}
+.pkr-promo-setting .pkr-promo-setting__button{
+
+}
+
+.select-posts{
+    border: 1px solid #ccc;
+}
+.select-posts .select-posts__search-field{
+    width: 100%;
+    padding: 5px;
+    border-radius: 0;
+    margin: 0;
+    border: 0;
+}
+.select-posts .select-posts__sides{
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+.select-posts .select-posts__side{
+
+}
+.select-posts .select-posts__items{
+    width: 50%;
+    border-right: 1px solid #ccc;
+    overflow: auto;
+    background: #F9F9F9;
+    height: 250px;
+}
+.select-posts .select-posts__selected{
+    width: 50%;
+}
+.select-posts .select-posts__item{
+    display: block;
+    padding: 7px;
+    text-decoration: none;
+    color: #333;
+}
+.select-posts .select-posts__item:hover{
+    background: #3875D7;
+    color: #fff;
+}
+.select-posts .select-posts__item span{
+
+}
+.chosen-container-multi .ui-sortable .search-choice{
+    width: 100%!important;
+}
+.chosen-container-multi .ui-sortable-placeholder{
+    width: 100%!important;
+    background: #ccc;
+    height: 15px;
+}
+.apf-slider{
+    padding: 10px;
+}
+.apf-slider .apf-slider__value{
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 115px;
+    padding-left: 15px;
+    padding-right: 15px;
+    vertical-align: middle;
+}
+.apf-slider .apf-slider__box{
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2) inset,
+    0 0 1px 1px rgba(0, 0, 0, 0.2) inset;
+    display: inline-block;
+    height: 10px;
+    margin: 0;
+    max-width: 500px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+    width: 100%;
+}
+.apf-slider .apf-slider__box .ui-slider-handle{
+    background: -webkit-linear-gradient(top, #fff, #ddd);
+    background: linear-gradient(to bottom, #fff, #ddd);
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4),
+    0 8px 6px rgba(0, 0, 0, 0.1);
+    cursor: ew-resize;
+    height: 18px;
+    margin-left: -.6em;
+    position: absolute;
+    top: -4px;
+    -ms-touch-action: none;
+    touch-action: none;
+    width: 18px;
+    z-index: 1;
+}
+.apf-slider .apf-slider__box .ui-slider-handle:focus{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    outline: none;
+}
+
+.apf-fields__menu{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.apf-fields__menu-button{
+    border-radius: 0!important;
+}
+
+.apf-fields__menu-button.active{
+    border-bottom: 0!important;
+}
+.apf-fields__menu-button.active:focus {
+    border-color: initial!important;
+    box-shadow: initial!important;
+}
+.apf-fields__subpage{
+    display:none;
+}
+.apf-fields__subpage.active{
+    display:block;
+}

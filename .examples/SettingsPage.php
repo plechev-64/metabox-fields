@@ -1,15 +1,20 @@
 <?php
 
+namespace Example;
+
+use Core\Module\CustomFields\Field;
+use Core\Module\MetaBox\AdminPage;
+
 class SettingsPage extends AdminPage {
 
 	function __construct( $id, $args = [] ) {
 		parent::__construct( $id, $args );
 	}
 
-	function get_form() {
+	function getForm() {
 
 		//Вкладки
-		return $this->get_subpages( [
+		return $this->getSubpages( [
 			'subpages' => [
 				'first' => [
 					'name' => 'Имя вкладки 1',
@@ -37,7 +42,7 @@ class SettingsPage extends AdminPage {
 	function get_content_first($data){
 
 		//text
-		$content = APF::setup( 'text', [
+		$content = Field::setup( 'text', [
 			'id'    => 'text_id',
 			'title' => __( 'Текстовое поле' ),
 			'width' => 'full',
@@ -45,7 +50,7 @@ class SettingsPage extends AdminPage {
 		] )->get_html();
 
 		//number
-		$content .= APF::setup( 'number', [
+		$content .= Field::setup( 'number', [
 			'id'         => 'number_id',
 			'title'      => __( 'Число' ),
 			'width'      => 'full',
@@ -56,7 +61,7 @@ class SettingsPage extends AdminPage {
 		] )->get_html();
 
 		//textarea
-		$content .= APF::setup( 'textarea', [
+		$content .= Field::setup( 'textarea', [
 			'id'    => 'textarea_id',
 			'title' => __( 'Текстовое поле' ),
 			'width' => 'full',
@@ -69,7 +74,7 @@ class SettingsPage extends AdminPage {
 	function get_content_two($data){
 
 		//select
-		$content = APF::setup( 'select', [
+		$content = Field::setup( 'select', [
 			'id'          => 'select_id',
 			'title'       => __( 'Выбор' ),
 			'empty_first' => 'Ничего не выбрано',
@@ -82,7 +87,7 @@ class SettingsPage extends AdminPage {
 		] )->get_html();
 
 		//checkbox
-		$content .= APF::setup( 'checkbox', [
+		$content .= Field::setup( 'checkbox', [
 			'id'     => 'checkbox_id',
 			'title'  => __( 'Чекбоксы' ),
 			'values' => [
@@ -94,7 +99,7 @@ class SettingsPage extends AdminPage {
 		] )->get_html();
 
 		//editor
-		$content .= APF::setup( 'editor', [
+		$content .= Field::setup( 'editor', [
 			'id'           => 'editor_id',
 			'title'        => __( 'Редактор' ),
 			'media_button' => 1,
